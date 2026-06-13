@@ -18,6 +18,13 @@ PreDelinq-AI/
 │   ├── installments_payments.csv
 │   └── credit_card_balance.csv
 │
+├── data_samples/                          # [TRACKED] Sample raw datasets (10 rows each)
+│   ├── application_train_sample.csv
+│   ├── bureau_sample.csv
+│   ├── previous_application_sample.csv
+│   ├── installments_payments_sample.csv
+│   └── credit_card_balance_sample.csv
+│
 ├── notebooks/                             # Core Analysis & Pipelines
 │   ├── 01_eda.ipynb                       # Phase 1: Exploratory Data Analysis (86 cells, 16 sections)
 │   └── 02_feature_engineering.ipynb       # Phase 2: Feature Engineering & Preprocessing (16 sections)
@@ -33,6 +40,9 @@ PreDelinq-AI/
 ---
 
 ## 🛠️ Datasets and Pipelines
+
+### Raw Data Samples (`data_samples/`)
+Since the original raw relational datasets are very large (~2.5 GB in total), they are excluded from GitHub. We have provided **10-row samples** for each core dataset (e.g., `application_train_sample.csv`, `bureau_sample.csv`, etc.) in the `data_samples/` folder. Recruiters can examine these to understand the starting schema, types of fields, and database relations.
 
 ### Phase 1: Exploratory Data Analysis (`notebooks/01_eda.ipynb`)
 Contains extensive demographic, financial, and behavioral credit analysis of candidates, showcasing credit card utilization trends, bureau risk metrics, and payment delays.

@@ -5,3 +5,4 @@ __pycache__/
 processed/*
 *.csv
 !processed/final_feature_table_sample.csv
+!data_samples/*.csv
