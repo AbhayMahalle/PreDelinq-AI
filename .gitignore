@@ -2,5 +2,6 @@
 .venv/
 __pycache__/
 *.pyc
-processed/
+processed/*
 *.csv
+!processed/final_feature_table_sample.csv
