@@ -1,0 +1,5 @@
+RISK_SEGMENT,Count,Percentage,Actual_Default_Rate_%
+Low Risk,13378,4.35,0.24
+Medium Risk,108598,35.32,1.69
+High Risk,121830,39.62,6.82
+Very High Risk,63705,20.72,22.99

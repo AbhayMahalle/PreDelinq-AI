@@ -6,3 +6,7 @@ processed/*
 *.csv
 !processed/final_feature_table_sample.csv
 !data_samples/*.csv
+!models/feature_importance.csv
+!models/model_comparison.csv
+!models/risk_segments.csv
+!models/customer_risk_scores_sample.csv
