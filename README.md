@@ -1,100 +1,334 @@
 # 🏦 PreDelinq AI — Credit Risk Intelligence Platform
 
-PreDelinq AI is an end-to-end, banking-grade credit risk modeling system and dashboard designed to predict customer delinquency. Built using the Home Credit dataset, this repository showcases a complete machine learning lifecycle—from Exploratory Data Analysis (EDA) and Feature Engineering to Model Development and the deployment of a **Full-Stack Credit Risk Intelligence Dashboard**.
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![CatBoost](https://img.shields.io/badge/CatBoost-Best%20Model-yellow)
+![Flask](https://img.shields.io/badge/Flask-Backend-black)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB)
+![SHAP](https://img.shields.io/badge/Explainable%20AI-SHAP-green)
+![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Credit%20Risk-red)
 
-This project demonstrates not only the ability to build highly predictive ML models but also the capability to deploy them into a professional, recruiter-friendly, Explainable AI (XAI) product.
+PreDelinq AI is an end-to-end Credit Risk Intelligence Platform that predicts customer delinquency risk using machine learning and provides explainable credit decisions through an interactive analytics dashboard.
+
+Built using the official Kaggle Home Credit Default Risk dataset, the project simulates a real-world banking workflow used by financial institutions for loan underwriting, risk assessment, and portfolio monitoring.
 
 ---
 
-## 🚀 Key Features
+## 🎯 Business Problem
 
-* **Advanced Predictive Modeling**: Utilizes CatBoost trained on 193 engineered features, achieving strong predictive performance (ROC-AUC: 0.7812).
-* **Explainable AI (SHAP)**: Fully integrates SHapley Additive exPlanations to provide regulatory-compliant, feature-level transparency for every credit decision.
-* **Banking-Grade Dashboard**: A premium, responsive React (Vite) frontend showcasing Probability of Default (PD) scoring, portfolio analytics, and model insights.
-* **Microservices Architecture**: A modular Flask REST API serving inferences and analytics in real-time.
+Financial institutions lose millions due to loan defaults.
+
+Traditional rule-based underwriting systems often fail to capture complex behavioral patterns hidden across customer demographics, bureau records, repayment history, and credit utilization behavior.
+
+PreDelinq AI addresses this challenge by:
+
+* Predicting Probability of Default (PD)
+* Segmenting customers into risk categories
+* Providing transparent AI explanations
+* Supporting data-driven lending decisions
+
+---
+
+## 🚀 Key Achievements
+
+### Data Engineering
+
+* Processed 307,511+ customer applications
+* Integrated 5 relational banking datasets
+* Engineered 193 customer-level features
+* Built scalable aggregation pipelines
+
+### Machine Learning
+
+* Trained and evaluated 5 industry-standard models
+* Compared Logistic Regression, Random Forest, XGBoost, LightGBM, and CatBoost
+* Achieved ROC-AUC of 0.781 with CatBoost
+* Generated Probability of Default scores for every customer
+
+### Explainable AI
+
+* Integrated SHAP explainability
+* Global feature importance analysis
+* Customer-level prediction explanations
+* Transparent risk factor reporting
+
+### Full Stack Engineering
+
+* Flask REST API
+* React Dashboard
+* Real-time credit scoring workflow
+* Professional risk analytics interface
+
+---
+
+## 📊 Dataset Source
+
+This project is built using the official Kaggle competition dataset:
+
+### Home Credit Default Risk
+
+https://www.kaggle.com/competitions/home-credit-default-risk
+
+### Competition Objective
+
+Many people lack sufficient credit history to obtain loans through traditional financial systems.
+
+Home Credit uses alternative customer information to predict repayment difficulties and improve financial inclusion.
+
+The objective is to predict:
+
+TARGET = 1 → Customer may experience repayment difficulties
+
+TARGET = 0 → Customer is expected to repay successfully
+
+### Datasets Used
+
+| Dataset                   | Purpose                                           |
+| ------------------------- | ------------------------------------------------- |
+| application_train.csv     | Customer demographics and application information |
+| bureau.csv                | External credit bureau history                    |
+| previous_application.csv  | Historical loan applications                      |
+| installments_payments.csv | Installment repayment behavior                    |
+| credit_card_balance.csv   | Credit card utilization patterns                  |
+
+### Dataset Characteristics
+
+| Metric              | Value                 |
+| ------------------- | --------------------- |
+| Customers           | 307,511               |
+| Tables Used         | 5                     |
+| Problem Type        | Binary Classification |
+| Domain              | Credit Risk Analytics |
+| Target Distribution | ~8% Defaults          |
+
+> Note: Raw Kaggle datasets are not included in this repository due to licensing restrictions and GitHub storage limitations. Sample datasets are provided for demonstration purposes.
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart LR
+
+A[Raw Banking Data]
+--> B[EDA]
+
+B --> C[Feature Engineering]
+
+C --> D[Model Training]
+
+D --> E[CatBoost Model]
+
+E --> F[SHAP Explainability]
+
+F --> G[Flask API]
+
+G --> H[React Dashboard]
+
+H --> I[Credit Risk Insights]
+```
+
+---
+
+## 📈 Machine Learning Performance
+
+| Model               | ROC-AUC   | Accuracy  | Precision | Recall    | F1        |
+| ------------------- | --------- | --------- | --------- | --------- | --------- |
+| Logistic Regression | 0.766     | 0.701     | 0.170     | 0.696     | 0.273     |
+| Random Forest       | 0.760     | 0.729     | 0.179     | 0.656     | 0.281     |
+| XGBoost             | 0.779     | 0.765     | 0.201     | 0.639     | 0.306     |
+| LightGBM            | 0.779     | 0.743     | 0.191     | 0.673     | 0.297     |
+| **CatBoost**        | **0.781** | **0.728** | **0.185** | **0.699** | **0.293** |
+
+### Best Model
+
+🏆 CatBoost
+
+Reason:
+
+* Highest ROC-AUC
+* Strong recall performance
+* Handles categorical patterns effectively
+* Stable performance under class imbalance
+
+---
+
+## 🧠 Explainable AI
+
+PreDelinq AI integrates SHAP (SHapley Additive Explanations) to ensure transparency and interpretability.
+
+### Global Explanations
+
+Understand which features drive portfolio-level risk.
+
+Examples:
+
+* EXT_SOURCE scores
+* Installment payment delays
+* Credit utilization
+* Debt burden ratios
+
+### Local Explanations
+
+Understand why a specific customer was classified as high risk.
+
+Examples:
+
+* High overdue balances
+* Frequent late payments
+* High debt-to-income ratio
+* Poor external bureau scores
+
+This approach aligns with modern model governance and explainable AI practices commonly used in banking and financial services.
 
 ---
 
 ## 🛠️ Technology Stack
 
-**Machine Learning & Data Processing**
-* Python, Pandas, NumPy
-* Scikit-Learn, CatBoost
-* SHAP (Explainable AI)
+### Machine Learning
 
-**Backend API**
-* Flask, Flask-CORS
-* Joblib (Model Serialization)
+* Scikit-Learn
+* CatBoost
+* XGBoost
+* LightGBM
 
-**Frontend Dashboard**
-* React.js (Vite)
-* Tailwind CSS v4, Lucide React
-* React Router DOM, Recharts, Axios
+### Data Processing
+
+* Pandas
+* NumPy
+
+### Visualization
+
+* Matplotlib
+* Seaborn
+
+### Explainability
+
+* SHAP
+
+### Backend
+
+* Flask
+* Flask-CORS
+* Joblib
+
+### Frontend
+
+* React.js
+* Vite
+* Tailwind CSS
+* Recharts
+* Axios
+
+### Version Control
+
+* Git
+* GitHub
 
 ---
 
-## 📂 Project Structure
+## 🚀 Reproducing the Project
+
+Due to GitHub file size limitations, the original Home Credit datasets and generated feature tables are not included in this repository.
+
+### Dataset Source
+
+Download the dataset from:
+
+https://www.kaggle.com/competitions/home-credit-default-risk/data
+
+After downloading, create the following directory structure:
 
 ```text
 PreDelinq-AI/
-├── backend/                               # Flask API Server
-│   ├── app.py                             # Application entry point
-│   ├── routes/                            # API endpoints (predictions, analytics, model_info)
-│   ├── services/                          # Business logic & Singleton ML loaders
-│   └── utils/                             # Feature mapping & recommendation logic
 │
-├── frontend/                              # Vite React Dashboard
-│   ├── src/pages/                         # Dashboard modules (Scoring, Portfolio, Explainability)
-│   ├── src/components/                    # Reusable UI (KPICards, RiskGauge)
-│   └── src/services/api.js                # Axios API client
+├── data/
+│   ├── application_train.csv
+│   ├── bureau.csv
+│   ├── previous_application.csv
+│   ├── installments_payments.csv
+│   └── credit_card_balance.csv
 │
-├── models/                                # Serialized ML Artifacts
-│   ├── best_model.pkl                     # Production CatBoost model
-│   ├── feature_importance.csv             # Global feature importance
-│   └── risk_segments.csv                  # Business-ready risk buckets
-│
-└── notebooks/                             # Data Science Pipeline
-    ├── 01_eda.ipynb                       # Exploratory Data Analysis
-    ├── 02_feature_engineering.ipynb       # Feature Engineering & Preprocessing
-    └── 03_model_development.ipynb         # Model Training & Evaluation
+├── notebooks/
+├── processed/
+├── models/
+└── ...
 ```
-*(Note: Large raw data files and the 329MB feature table are ignored via `.gitignore` to adhere to GitHub limitations).*
 
----
+### Run Phase 1 — Exploratory Data Analysis
 
-## 📈 The Pipeline (Phases 1-4)
+```bash
+jupyter notebook notebooks/01_eda.ipynb
+```
 
-### Phase 1: Exploratory Data Analysis (`notebooks/01_eda.ipynb`)
-Extensive demographic, financial, and behavioral credit analysis. Identified critical default patterns related to external credit scores, employment length, and credit card utilization.
+Outputs:
+- Data quality analysis
+- Missing value analysis
+- Risk pattern identification
+- Feature discovery
 
-### Phase 2: Feature Engineering (`notebooks/02_feature_engineering.ipynb`)
-Aggregated multiple relational tables into a single robust customer-level dataset containing 193 features. Engineered domain-specific financial proxies (e.g., Annuity-to-Income, Debt-to-Income) and handled high-cardinality categorical encoding.
+### Run Phase 2 — Feature Engineering
 
-### Phase 3: Model Development (`notebooks/03_model_development.ipynb`)
-Evaluated 5 industry-standard ML models. Selected **CatBoost** for its superior handling of categorical variables and overall performance. Mapped continuous Probability of Default (PD) scores into actionable risk buckets (Low, Medium, High) to simulate real-world underwriting workflows.
+```bash
+jupyter notebook notebooks/02_feature_engineering.ipynb
+```
 
-### Phase 4: Full-Stack Dashboard (`backend/` & `frontend/`)
-Transformed the Jupyter notebooks into a production-ready Local MVP. The platform allows loan officers and risk analysts to manually input customer profiles, receive instant PD scores, view SHAP-generated risk narratives, and monitor the overall portfolio health.
+Outputs:
 
----
+```text
+processed/
+└── final_feature_table.csv
+```
 
-## 💻 How to Run Locally
+### Run Phase 3 — Model Development
 
-The application is designed to run entirely on `localhost` without any Docker or cloud dependencies.
+```bash
+jupyter notebook notebooks/03_model_development.ipynb
+```
 
-### 1. Start the Flask Backend
+Outputs:
+
+```text
+models/
+├── best_model.pkl
+├── feature_importance.csv
+├── model_comparison.csv
+├── risk_segments.csv
+└── customer_risk_scores.csv
+```
+
+### Run Phase 4 — Credit Risk Dashboard
+
+Backend:
+
 ```bash
 cd backend
 pip install -r requirements.txt
 python app.py
 ```
-*The backend will initialize the CatBoost model and run on `http://localhost:5000`.*
 
-### 2. Start the React Frontend
-Open a new terminal window:
+Frontend:
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-*The dashboard will compile and be accessible at `http://localhost:3000`.*
+
+Application URLs:
+
+```text
+Frontend : http://localhost:5173
+Backend  : http://localhost:5000
+```
+
+### Sample Files Included
+
+To demonstrate project structure without uploading hundreds of megabytes of data, the repository includes:
+
+```text
+data_samples/
+processed/final_feature_table_sample.csv
+models/customer_risk_scores_sample.csv
+```
+
+These files contain small subsets of the original data and are intended purely for demonstration purposes.
